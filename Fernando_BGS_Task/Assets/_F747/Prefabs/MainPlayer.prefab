@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterPieces: {fileID: 11400000, guid: 2266f406f7f2b5b458e07722e5a3cdf2, type: 2}
   _equipItemChannel: {fileID: 11400000, guid: 34e1737443167a144b08def7be92c5f1, type: 2}
-  _updateArmourChannel: {fileID: 11400000, guid: bbbeeaa80a26f494dac8d3fb3bb36436,
+  _updateArmourChannel: {fileID: 11400000, guid: 83871ffc2d3cf434baf653d2ffff1be8,
     type: 2}
   _hoodSpriteRenderer: {fileID: 4333459745488486419}
   _headSpriteRenderer: {fileID: 8429118049545556419}

@@ -84,7 +84,7 @@ public class CharacterPiecesSO : ScriptableObject
 
         foreach (BodyPartType bodyPart in (BodyPartType[])Enum.GetValues(typeof(BodyPartType)))
         {
-            if (bodyPart == BodyPartType.Hair) continue;
+            if (bodyPart == BodyPartType.Hair || bodyPart == BodyPartType.Head) continue;
             foreach (BaseItemSO baseItem in GetListOf(bodyPart))
             {
                 baseItem.LoadInfo();
