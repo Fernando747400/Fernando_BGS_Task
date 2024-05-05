@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LandScape
+  - Buildings
+  - Fences
+  - Nature
+  - OtherBuildings
+  - Props
   layers:
   - Default
   - TransparentFX
@@ -11,11 +17,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LandScape
+  - Buildings
+  - Nature
+  - OtherBuidlings
+  - Props
   - 
   - 
   - 
