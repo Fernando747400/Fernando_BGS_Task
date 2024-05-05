@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b7f4d7075044444bf5679ff966c6dd, type: 3}
+  m_Name: Elbow_l_02
+  m_EditorClassIdentifier: 
+  ID: 32
+  Name: Elbow_l_02
+  Sprite: {fileID: 21300000, guid: 3a94b1e5121a110479590d1d60ce75f0, type: 3}
+  BodyPartType: 6
+  Price: 100
+  Purchased: 0
+  HasPair: 1
+  Pair: {fileID: 11400000, guid: 518ab8223c55f30458b8a263a98dff9a, type: 2}
+  BaseOfPair: 1
+  GrantsExtraStats: 1
+  Health: 0
+  Damage: 5
+  Speed: 5
+  StoreIcon: {fileID: 478756669, guid: ee9af37dd9905fd4e8db1d2fb0a46a4d, type: 3}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b7f4d7075044444bf5679ff966c6dd, type: 3}
+  m_Name: Leg_r_02
+  m_EditorClassIdentifier: 
+  ID: 69
+  Name: Leg_r_02
+  Sprite: {fileID: 21300000, guid: 321cb2880c53eb743987a6a94741e4f0, type: 3}
+  BodyPartType: 10
+  Price: 100
+  Purchased: 0
+  HasPair: 1
+  Pair: {fileID: 11400000, guid: 4a6803866b292004a92590aca807141e, type: 2}
+  BaseOfPair: 0
+  GrantsExtraStats: 1
+  Health: 5
+  Damage: 0
+  Speed: 5
+  StoreIcon: {fileID: 384801332, guid: d36cdd6252609db43b9738cc64d036a9, type: 3}

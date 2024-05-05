@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b7f4d7075044444bf5679ff966c6dd, type: 3}
+  m_Name: Boot_l_01
+  m_EditorClassIdentifier: 
+  ID: 56
+  Name: Boot_l_01
+  Sprite: {fileID: 21300000, guid: 6fa8902135d83ff49a376c05761b61d4, type: 3}
+  BodyPartType: 11
+  Price: 0
+  Purchased: 1
+  HasPair: 1
+  Pair: {fileID: 11400000, guid: cf532b64817e5b2488ec904e6bd090d3, type: 2}
+  BaseOfPair: 1
+  GrantsExtraStats: 0
+  Health: 0
+  Damage: 0
+  Speed: 0
+  StoreIcon: {fileID: -1485122551, guid: 88382ec0c4c872043baf71a6d7f205bf, type: 3}

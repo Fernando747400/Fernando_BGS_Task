@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42139e1db7eda647ae8d7926675a6fd, type: 3}
+  m_Name: CharacterPieces
+  m_EditorClassIdentifier: 
+  _armourUpdatedChannel: {fileID: 11400000, guid: bbbeeaa80a26f494dac8d3fb3bb36436, type: 2}
+  HoodPieces:
+  - {fileID: 11400000, guid: 33eb630c116b340448c14806a1341f33, type: 2}
+  - {fileID: 11400000, guid: f1bd80d4b5c098046a4982f5571c8875, type: 2}
+  - {fileID: 11400000, guid: 7d484f6c707a8ef429d6fbaa5f078aa8, type: 2}
+  - {fileID: 11400000, guid: 9ab3336a3f14c8246aca45ae74f4fb1c, type: 2}
+  - {fileID: 11400000, guid: c35e36e7db2066a4a938dc104f8108b0, type: 2}
+  - {fileID: 11400000, guid: eb2c83542cbc24346814d0e0674ddcef, type: 2}
+  FacePieces:
+  - {fileID: 11400000, guid: 6a236e5cfe3365242a1296f3f045cd92, type: 2}
+  - {fileID: 11400000, guid: 13ba16a8630405e41b3712cebd4df4e9, type: 2}
+  - {fileID: 11400000, guid: 47ddd3c155f2ee24ab8b7ad21a45bf96, type: 2}
+  - {fileID: 11400000, guid: 3314fa45b7cc11f499d0bcda4c9d62f7, type: 2}
+  - {fileID: 11400000, guid: e0afbf1a7296b6f44be43e1f2a13cba5, type: 2}
+  HeadPieces:
+  - {fileID: 11400000, guid: 09f913230ab53e543a7514cfaa1928e6, type: 2}
+  ShoulderPieces:
+  - {fileID: 11400000, guid: e17738b5a1b59214180e8277f597ade2, type: 2}
+  - {fileID: 11400000, guid: 85eaa563a1003a54585b34689556661f, type: 2}
+  - {fileID: 11400000, guid: 02cf2788c7046bb42adad7724df6b5d1, type: 2}
+  - {fileID: 11400000, guid: df854a5c89723b54ab141e0d83eaf9f5, type: 2}
+  - {fileID: 11400000, guid: a5d8605ffe1714942b4c2f47fb687037, type: 2}
+  - {fileID: 11400000, guid: cad6b1b3292bba8499ea4623a8e7a8ab, type: 2}
+  ElbowPieces:
+  - {fileID: 11400000, guid: 4df23246c91d3bb4b9064d9e5fdad780, type: 2}
+  - {fileID: 11400000, guid: 2bbc0533f5934684db9370494d05f026, type: 2}
+  - {fileID: 11400000, guid: 697779d019e8b0847962b17e31dba67d, type: 2}
+  - {fileID: 11400000, guid: ab24cbfac5b16b84ea2a1366f0874573, type: 2}
+  - {fileID: 11400000, guid: 9e94fe320a53a1f409e31b31c1c81654, type: 2}
+  TorsoPieces:
+  - {fileID: 11400000, guid: 0f4051dbe8499b94d8628a0470d0eb79, type: 2}
+  - {fileID: 11400000, guid: e5059f327a6893e4090ce110f2f5e819, type: 2}
+  - {fileID: 11400000, guid: 4b4c0af023b01fc418fcf00979f3165d, type: 2}
+  - {fileID: 11400000, guid: 64183d118e26ac84d9c570a845490042, type: 2}
+  - {fileID: 11400000, guid: 4a56e3f60918ca049a9e488e18e11bc7, type: 2}
+  - {fileID: 11400000, guid: 2bd97bff019866748bc129a25ab1fa6a, type: 2}
+  WristPieces:
+  - {fileID: 11400000, guid: fea858299ac67df4aab8c4a1be086691, type: 2}
+  - {fileID: 11400000, guid: 6a80cb56f63d01c41a3662b024315d76, type: 2}
+  - {fileID: 11400000, guid: 5bfbf670588c371438507993b7f3325b, type: 2}
+  - {fileID: 11400000, guid: 4d19153fb43b688409ffb359cfb64d9a, type: 2}
+  - {fileID: 11400000, guid: 7554e532c741af448a61822682380084, type: 2}
+  PelvisPieces:
+  - {fileID: 11400000, guid: d0b43073f715f114dad4f4485f230f2f, type: 2}
+  - {fileID: 11400000, guid: 8c05f7957b3ac784b873eb5a6d556871, type: 2}
+  - {fileID: 11400000, guid: ea1c4466f2b9ce9438d2af0aa3c5b967, type: 2}
+  - {fileID: 11400000, guid: d447c1823e9606448a4553a85c66278d, type: 2}
+  - {fileID: 11400000, guid: f807c057e3d647b4d88d215e4f47d3fa, type: 2}
+  - {fileID: 11400000, guid: cf1977d4797cb6946b0ba2c4643d0a61, type: 2}
+  LegsPieces:
+  - {fileID: 11400000, guid: 0cd4fbf680bca9644a7a9045e94aaa05, type: 2}
+  - {fileID: 11400000, guid: 4a6803866b292004a92590aca807141e, type: 2}
+  - {fileID: 11400000, guid: 9234b365d9482304e9cf42bfe380fd5e, type: 2}
+  - {fileID: 11400000, guid: db78818ba9e001248a5e620323768194, type: 2}
+  BootPieces:
+  - {fileID: 11400000, guid: f64d6753c92e808448bcc01b7bd4fe01, type: 2}
+  - {fileID: 11400000, guid: b2d6b6c13fb555249930935b3db739c5, type: 2}
+  - {fileID: 11400000, guid: 0d489776784dbf742aeb1867d057ca90, type: 2}
+  - {fileID: 11400000, guid: 740deab0ba5e4d74db11b6532db5fabc, type: 2}
+  - {fileID: 11400000, guid: b7290629c541e704aa46a720698abda6, type: 2}
+  WeaponPieces:
+  - {fileID: 11400000, guid: 7e530c73187b88f4fbdc389bfe145ca7, type: 2}
+  - {fileID: 11400000, guid: d45cc488554365e4ea317222626bbe67, type: 2}
+  - {fileID: 11400000, guid: e20deface382fe84b9f0c01c6a95ea95, type: 2}
+  - {fileID: 11400000, guid: e391e23f31308974bb569ce13ba1ba68, type: 2}
+  - {fileID: 11400000, guid: 785ea3949a0af9344a264e0f45e2b896, type: 2}
+  - {fileID: 11400000, guid: 3209cd4787c439a42a4f79e13d46dd33, type: 2}
+  HoodCurrentIndex: 0
+  FaceCurrentIndex: 0
+  HeadCurrentIndex: 0
+  ShoulderCurrentIndex: 0
+  ElbowCurrentIndex: 0
+  TorsoCurrentIndex: 0
+  WristsCurrentIndex: 0
+  PelvisCurrentIndex: 0
+  LegsCurrentIndex: 0
+  BootCurrentIndex: 0
+  WeaponCurrentIndex: 0
