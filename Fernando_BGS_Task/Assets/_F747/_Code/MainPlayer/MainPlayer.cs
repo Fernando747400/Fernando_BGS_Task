@@ -20,6 +20,11 @@ public class MainPlayer : MonoBehaviour
     public CharacterController CharacterController { get { return _characterController; }}
     public float AttackRadius { get { return _attackRadius; }}
 
+    private void Update()
+    {
+        
+    }
+
     public void ChangeState(PlayerState newState)
     {
         if(_currentState == newState) return;

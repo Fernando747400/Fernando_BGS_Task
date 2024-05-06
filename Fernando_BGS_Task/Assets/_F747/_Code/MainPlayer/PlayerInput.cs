@@ -40,7 +40,7 @@ public class PlayerInput : MonoBehaviour
         _playerInputAction.MainPlayer.Disable();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Move();
     }
@@ -107,7 +107,7 @@ public class PlayerInput : MonoBehaviour
 
     private bool CanPerformAction()
     {
-        return (_currentState != PlayerState.Attacking || _currentState != PlayerState.Dying || _currentState != PlayerState.Death || _currentState != PlayerState.Paused);
+        return (_currentState != PlayerState.Attacking && _currentState != PlayerState.Dying && _currentState != PlayerState.Death && _currentState != PlayerState.Paused);
     }
 
     

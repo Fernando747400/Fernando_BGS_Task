@@ -56,5 +56,10 @@ public class PlayerAnimator : MonoBehaviour
         _mainPlayer.SendAttack();
     }
 
+    public void FinishAttack()
+    {
+        _mainPlayer.ChangeState(PlayerState.Idle);
+    }
+
     #endregion Methods called by animations
 }

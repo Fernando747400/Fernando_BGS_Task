@@ -10,6 +10,7 @@ TagManager:
   - Nature
   - OtherBuildings
   - Props
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Nature
   - OtherBuidlings
   - Props
-  - 
+  - Enemy
   - 
   - 
   - 

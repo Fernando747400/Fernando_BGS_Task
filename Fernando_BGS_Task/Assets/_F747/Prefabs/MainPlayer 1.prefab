@@ -847,6 +847,7 @@ MonoBehaviour:
   _characterController: {fileID: 5559331326483356531}
   _playerAnimator: {fileID: 7619202281905411549}
   _playerInput: {fileID: 8212092111783779284}
+  _attackRadius: 1
 --- !u!114 &8212092111783779284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,7 +863,7 @@ MonoBehaviour:
   _mainPlayer: {fileID: 3881875974218273345}
   _playerSprite: {fileID: 2424165117552029011}
   _moveSpeed: 3
-  _rotationSpeed: 2
+  _rotationSpeed: 3
 --- !u!1 &5559331326958709431
 GameObject:
   m_ObjectHideFlags: 0
