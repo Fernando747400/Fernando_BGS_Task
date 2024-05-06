@@ -87,7 +87,12 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 280464565196857244}
   _enemyAnimator: {fileID: 2012643895463007465}
   _enemyMovement: {fileID: 1812874657196643437}
-  _attackRange: 2
+  _attackRange: {fileID: 11400000, guid: dfc163bb7cbad974599a2ef3c358fd20, type: 2}
+  _attackRate: {fileID: 11400000, guid: 33b89e3e890875b45bb00f35c7df4588, type: 2}
+  _attackDamage: {fileID: 11400000, guid: cb20c2115f575c043b08285ed1395431, type: 2}
+  _movementSpeed: {fileID: 11400000, guid: 383e621c8315aee498dcb534f9fedef0, type: 2}
+  _stoppingDistance: {fileID: 11400000, guid: 7d5d3c3e29244094b8800e64d8322908, type: 2}
+  _maxHealth: {fileID: 11400000, guid: b2a065693feb41c40b769b45b1ef0b35, type: 2}
 --- !u!114 &1812874657196643437
 MonoBehaviour:
   m_ObjectHideFlags: 0

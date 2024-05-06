@@ -1,19 +1,20 @@
-using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(EnemyManager))]
 public class EnemyMovement : MonoBehaviour
 {
-    [Header("Dependencies")]
-    [Required][SerializeField] private EnemyManager _enemyManager;
-    [Required][SerializeField] private NavMeshAgent _navMeshAgent;
+    private EnemyManager _enemyManager;
+    private NavMeshAgent _navMeshAgent;
 
     [SerializeField] private Transform _target;
 
     private PlayerState _currentState = PlayerState.Idle;
     private float _elapsedAttackTime = 0f;
 
-    public Transform Target { get { return _target; } set { _target = value; } }
+    public Transform Target { set { _target = value; } }
+    public EnemyManager EnemyManager { set { _enemyManager = value; } }
+    public NavMeshAgent NavMeshAgent { set {  _navMeshAgent = value; SetUpNavMesh(); } }
 
 
     private void Update()
@@ -62,6 +63,12 @@ public class EnemyMovement : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void SetUpNavMesh()
+    {
+        _navMeshAgent.speed = _enemyManager.MovementSpeed;
+        _navMeshAgent.stoppingDistance = _enemyManager.StoppingDistance;
     }
 
     private bool CanPerformAction()

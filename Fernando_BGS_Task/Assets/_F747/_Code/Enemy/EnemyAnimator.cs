@@ -1,3 +1,4 @@
+using Lean.Pool;
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,8 +8,9 @@ public class EnemyAnimator : MonoBehaviour
 {
 
     [Header("Dependencies")]
-    [Required][SerializeField] private EnemyManager _enemyManager;
     [Required][SerializeField] private Animator _enemyAnimator;
+
+    private EnemyManager _enemyManager;
 
     [AnimatorParam("_enemyAnimator")][SerializeField] private string _idleAnimation;
     [AnimatorParam("_enemyAnimator")][SerializeField] private string _walkingAnimation;
@@ -18,11 +20,12 @@ public class EnemyAnimator : MonoBehaviour
 
     private PlayerState _currentState;
 
+    public EnemyManager EnemyManager { set { _enemyManager = value; } }
+
     public void SetState(PlayerState playerState)
     {
         if (_currentState == playerState) return;
         _currentState = playerState;
-        Debug.Log("Enemy state in animator" + _currentState);
         switch (_currentState)
         {
             case PlayerState.Idle:
@@ -32,7 +35,6 @@ public class EnemyAnimator : MonoBehaviour
                 _enemyAnimator.Play(_walkingAnimation);
                 break;
             case PlayerState.Attacking:
-                Debug.Log("Calling attack");
                 _enemyAnimator.Play(_attackingAnimation);
                 break;
             case PlayerState.Hit:
@@ -63,6 +65,11 @@ public class EnemyAnimator : MonoBehaviour
     public void FinishAttack()
     {
         _enemyManager.ChangeState(PlayerState.Idle);
+    }
+
+    public void Die()
+    {
+       LeanPool.Despawn(this.gameObject);
     }
 
     #endregion Methods called by animations
