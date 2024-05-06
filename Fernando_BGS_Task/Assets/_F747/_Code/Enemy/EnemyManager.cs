@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
     [Required][SerializeField] private NavMeshAgent _navMeshAgent;
     [Required][SerializeField] private EnemyAnimator _enemyAnimator;
     [Required][SerializeField] private EnemyMovement _enemyMovement;
+    [Required][SerializeField] private ScriptableEventNoParam _enemyDiedChannel;
 
     [Header("Settings SO")]
     [Header("Attack")]
@@ -31,6 +32,7 @@ public class EnemyManager : MonoBehaviour
     public float AttackDamage { get { return _attackDamage; } }
     public float MovementSpeed { get { return _movementSpeed; } }
     public float StoppingDistance { get { return _stoppingDistance; } }
+    public ScriptableEventNoParam EnemyDiedChannel { get { return _enemyDiedChannel; } }
 
     private void Awake()
     {

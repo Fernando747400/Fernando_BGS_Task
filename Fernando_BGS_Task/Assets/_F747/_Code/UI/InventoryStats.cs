@@ -51,8 +51,8 @@ public class InventoryStats : MonoBehaviour
             speedTemporary += item.Speed;
         }
 
-        _playerStatsSO.MaxHealth.Value = healthTemporary;
-        _playerStatsSO.CurrentDamage.Value = damageTemporary;
-        _playerStatsSO.CurrentSpeed.Value = speedTemporary;
+        _playerStatsSO.MaxHealthUpdate(healthTemporary);
+        _playerStatsSO.DamageUpdate(damageTemporary);
+        _playerStatsSO.SpeedUpdate(speedTemporary);
     }
 }

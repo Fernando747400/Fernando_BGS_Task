@@ -5,12 +5,11 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     [Header("Dependencies")]
-    [Required][SerializeField] private MainPlayer _mainPlayer;
     [Required][SerializeField] private GameObject _playerSprite;
-
-    [Header("Settings")]
-    [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private float _rotationSpeed = 2f;
+  
+    private MainPlayer _mainPlayer;
+    private float _moveSpeed = 5f;
+    private float _rotationSpeed = 2f;
 
     private Camera _playerCamera;
     private CharacterController _characterController;
@@ -19,6 +18,10 @@ public class PlayerInput : MonoBehaviour
     private InputAction _moveAction;
 
     private PlayerState _currentState;
+
+    public MainPlayer MainPlayer { set { _mainPlayer = value; } }
+    public float MoveSpeed { set {_moveSpeed = value; } }
+    public float RotationSpeed { set { _rotationSpeed = value; } }
 
     private void Awake()
     {

@@ -151,7 +151,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3017130711619384138}
-  m_LocalRotation: {x: 0.041532546, y: 0.012948811, z: -0.00053830683, w: 0.9990531}
+  m_LocalRotation: {x: 0.041532546, y: 0.012948807, z: -0.00053830666, w: 0.9990531}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -847,7 +847,26 @@ MonoBehaviour:
   _characterController: {fileID: 5559331326483356531}
   _playerAnimator: {fileID: 7619202281905411549}
   _playerInput: {fileID: 8212092111783779284}
-  _attackRadius: 1
+  _playerSpeedCurrent: {fileID: 11400000, guid: 88f47c7c595a54645827b52ef3c1e7f9,
+    type: 2}
+  _playerRotationSpeedCurrent: {fileID: 11400000, guid: 88f47c7c595a54645827b52ef3c1e7f9,
+    type: 2}
+  _attackRadiusCurrent: {fileID: 11400000, guid: 6f74996e6d8bccc4fb6e6156cdf328bd,
+    type: 2}
+  _attackDamageCurrent: {fileID: 11400000, guid: 3d1f00c180fd59548a00801264459ab6,
+    type: 2}
+  _attackDamage:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _attackSpeed:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8212092111783779284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,10 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40180bf74eb84634b97665aa984e3822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainPlayer: {fileID: 3881875974218273345}
   _playerSprite: {fileID: 2424165117552029011}
-  _moveSpeed: 3
-  _rotationSpeed: 3
 --- !u!1 &5559331326958709431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,7 +1218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e2fd9c6e3fdcd4e83472e4338b080a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainPlayer: {fileID: 3881875974218273345}
   _playerAnimator: {fileID: 3392262464464302541}
   _idleAnimation: Rogue_Idle
   _walkingAnimation: Rogue_Walk

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9978ce9c8bdc724896114c9952c52ea, type: 3}
-  m_Name: CurrentSpeed
+  m_Name: Player_Current_Damage
   m_EditorClassIdentifier: 
   CategoryIndex: 0
   Description: 
-  _guid: 88f47c7c595a54645827b52ef3c1e7f9
+  _guid: 3d1f00c180fd59548a00801264459ab6
   _saveGuid: 0
   _value: 50
   _debugLogEnabled: 0

@@ -4,8 +4,9 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [Header("Dependencies")]
-    [Required][SerializeField] private MainPlayer _mainPlayer;
     [Required][SerializeField] private Animator _playerAnimator;
+
+    private MainPlayer _mainPlayer;
 
     [AnimatorParam("_playerAnimator")][SerializeField] private string _idleAnimation;
     [AnimatorParam("_playerAnimator")][SerializeField] private string _walkingAnimation;
@@ -14,6 +15,8 @@ public class PlayerAnimator : MonoBehaviour
     [AnimatorParam("_playerAnimator")][SerializeField] private string _dyingAnimation;
 
     private PlayerState _currentState = PlayerState.Idle;
+    
+    public MainPlayer MainPlayer { set { _mainPlayer = value; } }
 
     public void SetPlayerState(PlayerState playerState)
     {

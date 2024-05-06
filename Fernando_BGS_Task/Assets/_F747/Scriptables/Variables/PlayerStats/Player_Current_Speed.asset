@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9978ce9c8bdc724896114c9952c52ea, type: 3}
-  m_Name: BaseSpeed
+  m_Name: Player_Current_Speed
   m_EditorClassIdentifier: 
   CategoryIndex: 0
   Description: 
-  _guid: 5d9dd59c06f5c884092bd3d48417a973
+  _guid: 88f47c7c595a54645827b52ef3c1e7f9
   _saveGuid: 0
   _value: 50
   _debugLogEnabled: 0
-  _saved: 0
+  _saved: 1
   _defaultValue: 50
   _resetOn: 1
   _isClamped: 1
-  _minMax: {x: 50, y: 50}
+  _minMax: {x: 0, y: 1000}

@@ -87,6 +87,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 280464565196857244}
   _enemyAnimator: {fileID: 2012643895463007465}
   _enemyMovement: {fileID: 1812874657196643437}
+  _enemyDiedChannel: {fileID: 11400000, guid: ef0107d3428bd5e448034a45925985de, type: 2}
   _attackRange: {fileID: 11400000, guid: dfc163bb7cbad974599a2ef3c358fd20, type: 2}
   _attackRate: {fileID: 11400000, guid: 33b89e3e890875b45bb00f35c7df4588, type: 2}
   _attackDamage: {fileID: 11400000, guid: cb20c2115f575c043b08285ed1395431, type: 2}
@@ -105,8 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ce4865de0bd2c41aa2e09de33b6782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyManager: {fileID: 1569057446692619008}
-  _navMeshAgent: {fileID: 280464565196857244}
   _target: {fileID: 0}
 --- !u!1001 &280464566169767069
 PrefabInstance:
@@ -1282,7 +1281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da714c6c646b99144a04e112de7ff0e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyManager: {fileID: 1569057446692619008}
   _enemyAnimator: {fileID: 7145758728202579519}
   _idleAnimation: Idle_Enemy
   _walkingAnimation: Walk_Enemy

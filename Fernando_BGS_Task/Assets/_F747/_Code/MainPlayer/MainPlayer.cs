@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using Obvious.Soap;
 using UnityEngine;
 
 public class MainPlayer : MonoBehaviour
@@ -9,8 +10,17 @@ public class MainPlayer : MonoBehaviour
     [Required][SerializeField] private PlayerAnimator _playerAnimator;
     [Required][SerializeField] private PlayerInput _playerInput;
 
-    [Header("Settings")]
-    [SerializeField] private float _attackRadius = 5f;
+    [Header("Player Movement")]
+    [Required][SerializeField] private FloatVariable _playerSpeedCurrent;
+    [Required][SerializeField] private FloatVariable _playerRotationSpeedCurrent;
+
+    [Header("Attack")]
+    [Required][SerializeField] private FloatVariable _attackRadiusCurrent;
+    [Required][SerializeField] private FloatVariable _attackDamageCurrent;
+
+    [Header("Final Curves")]
+    [SerializeField] private AnimationCurve _attackDamage;
+    [SerializeField] private AnimationCurve _attackSpeed;
     
 
     private PlayerState _currentState;
@@ -18,7 +28,17 @@ public class MainPlayer : MonoBehaviour
     public PlayerState CurrentState { get { return _currentState; }}
     public Camera PlayerCamera { get { return _playerCamera; }}
     public CharacterController CharacterController { get { return _characterController; }}
-    public float AttackRadius { get { return _attackRadius; }}
+    public float AttackRadius { get { return _attackRadiusCurrent; }}
+
+    private void Awake()
+    {
+        SetUpPlayer();
+    }
+
+    private void OnEnable()
+    {
+       SetUpPlayer();
+    }
 
     private void Update()
     {
@@ -36,7 +56,7 @@ public class MainPlayer : MonoBehaviour
 
     public void SendAttack()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, _attackRadius);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, _attackRadiusCurrent);
 
         foreach (var hitCollider in hitColliders)
         {
@@ -56,6 +76,14 @@ public class MainPlayer : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.transform.position, _attackRadius);
+        Gizmos.DrawWireSphere(this.transform.position, _attackRadiusCurrent);
+    }
+
+    private void SetUpPlayer()
+    {
+        _playerAnimator.MainPlayer = this;
+        _playerInput.MainPlayer = this;
+        _playerInput.MoveSpeed = _playerSpeedCurrent;
+        _playerInput.RotationSpeed = _playerRotationSpeedCurrent;
     }
 }
