@@ -5,17 +5,20 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     [Header("Dependencies")]
-    [Required][SerializeField] private Camera _playerCamera;
-    [Required][SerializeField] private CharacterController _characterController;
+    [Required][SerializeField] private MainPlayer _mainPlayer;
     [Required][SerializeField] private GameObject _playerSprite;
-
 
     [Header("Settings")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _rotationSpeed = 2f;
 
+    private Camera _playerCamera;
+    private CharacterController _characterController;
+
     private PlayerInputAction _playerInputAction;
     private InputAction _moveAction;
+
+    private PlayerState _currentState;
 
     private void Awake()
     {
@@ -24,8 +27,17 @@ public class PlayerInput : MonoBehaviour
 
     private void OnEnable()
     {
+        _playerCamera = _mainPlayer.PlayerCamera;
+        _characterController = _mainPlayer.CharacterController;
         _moveAction = _playerInputAction.MainPlayer.Move;
+        _playerInputAction.MainPlayer.Attack.started += DoAttack;
         _playerInputAction.MainPlayer.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerInputAction.MainPlayer.Attack.started -= DoAttack;
+        _playerInputAction.MainPlayer.Disable();
     }
 
     private void FixedUpdate()
@@ -33,9 +45,20 @@ public class PlayerInput : MonoBehaviour
         Move();
     }
 
+    public void SetPlayerState(PlayerState state)
+    {
+        if (_currentState == state) return;
+        _currentState = state;
+    }
+
     private void Move()
     {
+        if (!CanPerformAction()) return;
         Vector2 movementInput = _moveAction.ReadValue<Vector2>();
+
+        if (movementInput == Vector2.zero) _mainPlayer.ChangeState(PlayerState.Idle);
+        else _mainPlayer.ChangeState(PlayerState.Moving);
+
         ChangeDirection(movementInput);
         Vector3 cameraDirection = GetCameraDirection();
 
@@ -48,6 +71,12 @@ public class PlayerInput : MonoBehaviour
         _characterController.SimpleMove(_moveSpeed * moveDirection);
 
         LookForward(moveDirection);
+    }
+
+    private void DoAttack(InputAction.CallbackContext context)
+    {
+        if (!CanPerformAction()) return;
+        _mainPlayer.ChangeState(PlayerState.Attacking);
     }
 
     private void LookForward(Vector3 direction)
@@ -70,10 +99,15 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-
     private Vector3 GetCameraDirection()
     {
+        if(_playerCamera == null) _playerCamera = _mainPlayer.PlayerCamera;
         return Vector3.Scale(_playerCamera.transform.forward, new Vector3(1, 0, 1)).normalized;
+    }
+
+    private bool CanPerformAction()
+    {
+        return (_currentState != PlayerState.Attacking || _currentState != PlayerState.Dying || _currentState != PlayerState.Death || _currentState != PlayerState.Paused);
     }
 
     

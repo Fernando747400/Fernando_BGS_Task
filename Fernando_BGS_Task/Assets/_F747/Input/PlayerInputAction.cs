@@ -80,6 +80,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""09df9e9a-03a8-432b-948d-9e25d742c081"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,28 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""action"": ""Return"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93c6df83-38b8-4b16-963e-83b6ad988683"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5915e54-5d65-4a45-a42c-1af5fd3ba050"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +237,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_MainPlayer_Interact = m_MainPlayer.FindAction("Interact", throwIfNotFound: true);
         m_MainPlayer_Escape = m_MainPlayer.FindAction("Escape", throwIfNotFound: true);
         m_MainPlayer_Return = m_MainPlayer.FindAction("Return", throwIfNotFound: true);
+        m_MainPlayer_Attack = m_MainPlayer.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +303,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainPlayer_Interact;
     private readonly InputAction m_MainPlayer_Escape;
     private readonly InputAction m_MainPlayer_Return;
+    private readonly InputAction m_MainPlayer_Attack;
     public struct MainPlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -281,6 +314,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_MainPlayer_Interact;
         public InputAction @Escape => m_Wrapper.m_MainPlayer_Escape;
         public InputAction @Return => m_Wrapper.m_MainPlayer_Return;
+        public InputAction @Attack => m_Wrapper.m_MainPlayer_Attack;
         public InputActionMap Get() { return m_Wrapper.m_MainPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,6 +342,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Return.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReturn;
                 @Return.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReturn;
                 @Return.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReturn;
+                @Attack.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnAttack;
             }
             m_Wrapper.m_MainPlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -330,6 +367,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Return.started += instance.OnReturn;
                 @Return.performed += instance.OnReturn;
                 @Return.canceled += instance.OnReturn;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
             }
         }
     }
@@ -342,5 +382,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnReturn(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }
