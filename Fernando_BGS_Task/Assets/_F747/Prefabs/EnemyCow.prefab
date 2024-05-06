@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1773379166074288633}
   - component: {fileID: 8791550914106162407}
   - component: {fileID: 280464565196857244}
+  - component: {fileID: 1569057446692619008}
   - component: {fileID: 1812874657196643437}
   m_Layer: 11
   m_Name: EnemyCow
@@ -59,11 +60,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 1.3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 1.6
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -71,6 +72,22 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 7
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1569057446692619008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156005900293615297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c66c366e75c1246b5e4fd4ba6e82b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _navMeshAgent: {fileID: 280464565196857244}
+  _enemyAnimator: {fileID: 2012643895463007465}
+  _enemyMovement: {fileID: 1812874657196643437}
+  _attackRange: 2
 --- !u!114 &1812874657196643437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ce4865de0bd2c41aa2e09de33b6782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyManager: {fileID: 1569057446692619008}
   _navMeshAgent: {fileID: 280464565196857244}
   _target: {fileID: 0}
 --- !u!1001 &280464566169767069
@@ -1235,3 +1253,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 280464566169767069}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &7145758728202579519 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6975720394448396962, guid: ae146497589310a4cbee788292c9ee53,
+    type: 3}
+  m_PrefabInstance: {fileID: 280464566169767069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7690652020610490139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7592724057502700422, guid: ae146497589310a4cbee788292c9ee53,
+    type: 3}
+  m_PrefabInstance: {fileID: 280464566169767069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2012643895463007465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690652020610490139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da714c6c646b99144a04e112de7ff0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyManager: {fileID: 1569057446692619008}
+  _enemyAnimator: {fileID: 7145758728202579519}
+  _idleAnimation: Idle_Enemy
+  _walkingAnimation: Walk_Enemy
+  _attackingAnimation: Attack_Enemy
+  _hitAnimation: Hit_Enemy
+  _dyingAnimation: Death_Enemy
