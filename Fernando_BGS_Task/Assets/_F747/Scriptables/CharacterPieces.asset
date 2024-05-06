@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42139e1db7eda647ae8d7926675a6fd, type: 3}
   m_Name: CharacterPieces
   m_EditorClassIdentifier: 
-  _armourUpdatedChannel: {fileID: 11400000, guid: bbbeeaa80a26f494dac8d3fb3bb36436, type: 2}
+  _armourUpdatedChannel: {fileID: 11400000, guid: bbbeeaa80a26f494dac8d3fb3bb36436,
+    type: 2}
   HoodPieces:
   - {fileID: 11400000, guid: 33eb630c116b340448c14806a1341f33, type: 2}
   - {fileID: 11400000, guid: f1bd80d4b5c098046a4982f5571c8875, type: 2}

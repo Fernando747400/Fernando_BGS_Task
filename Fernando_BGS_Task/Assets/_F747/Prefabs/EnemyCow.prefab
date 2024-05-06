@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 280464565196857244}
   - component: {fileID: 1569057446692619008}
   - component: {fileID: 1812874657196643437}
+  - component: {fileID: 4393914406863520133}
   m_Layer: 11
   m_Name: EnemyCow
   m_TagString: Enemy
@@ -107,6 +108,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
+--- !u!210 &4393914406863520133
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156005900293615297}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1001 &280464566169767069
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,11 +5,8 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     [Header("Dependencies")]
+    [Required][SerializeField] private MainPlayer _mainPlayer;
     [Required][SerializeField] private GameObject _playerSprite;
-  
-    private MainPlayer _mainPlayer;
-    private float _moveSpeed = 5f;
-    private float _rotationSpeed = 2f;
 
     private Camera _playerCamera;
     private CharacterController _characterController;
@@ -19,9 +16,9 @@ public class PlayerInput : MonoBehaviour
 
     private PlayerState _currentState;
 
+    private float _elpasedAttackTime = 0;
+
     public MainPlayer MainPlayer { set { _mainPlayer = value; } }
-    public float MoveSpeed { set {_moveSpeed = value; } }
-    public float RotationSpeed { set { _rotationSpeed = value; } }
 
     private void Awake()
     {
@@ -46,6 +43,7 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         Move();
+        if(_currentState != PlayerState.Paused) _elpasedAttackTime += Time.deltaTime;
     }
 
     public void SetPlayerState(PlayerState state)
@@ -71,15 +69,17 @@ public class PlayerInput : MonoBehaviour
         if (moveDirection.magnitude > 1f)
             moveDirection.Normalize();
 
-        _characterController.SimpleMove(_moveSpeed * moveDirection);
+        _characterController.SimpleMove(_mainPlayer.MoveSpeed * moveDirection);
 
         LookForward(moveDirection);
     }
 
     private void DoAttack(InputAction.CallbackContext context)
     {
+        if(_elpasedAttackTime < _mainPlayer.AttackSpeed) return;
         if (!CanPerformAction()) return;
         _mainPlayer.ChangeState(PlayerState.Attacking);
+        _elpasedAttackTime = 0f;
     }
 
     private void LookForward(Vector3 direction)
@@ -87,7 +87,7 @@ public class PlayerInput : MonoBehaviour
         if (direction == Vector3.zero) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _mainPlayer.MoveSpeed * Time.deltaTime);
     }
 
     private void ChangeDirection(Vector2 inputVector)

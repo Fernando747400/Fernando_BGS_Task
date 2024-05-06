@@ -9,6 +9,10 @@ public class MainPlayer : MonoBehaviour
     [Required][SerializeField] private CharacterController _characterController;
     [Required][SerializeField] private PlayerAnimator _playerAnimator;
     [Required][SerializeField] private PlayerInput _playerInput;
+    [Required][SerializeField] private ScriptableEventNoParam _playerDiedChannel;
+
+    [Header("Player Health")]
+    [Required][SerializeField] private FloatVariable _playerCurrentHealth;
 
     [Header("Player Movement")]
     [Required][SerializeField] private FloatVariable _playerSpeedCurrent;
@@ -19,26 +23,26 @@ public class MainPlayer : MonoBehaviour
     [Required][SerializeField] private FloatVariable _attackDamageCurrent;
 
     [Header("Final Curves")]
-    [SerializeField] private AnimationCurve _attackDamage;
-    [SerializeField] private AnimationCurve _attackSpeed;
+    [CurveRange(50, 40, 115, 100, EColor.Green)] // min.x, min.y, max.x, max.y
+    [SerializeField] private AnimationCurve _attackDamageCurve;
+
+    [CurveRange(50, 2, 140, 5, EColor.Orange)]
+    [SerializeField] private AnimationCurve _attackSpeedCurve;
+
+    [CurveRange(50, 2, 140, 5, EColor.Red)]
+    [SerializeField] private AnimationCurve _moveSpeedCurve;
     
 
     private PlayerState _currentState;
-
+     
     public PlayerState CurrentState { get { return _currentState; }}
     public Camera PlayerCamera { get { return _playerCamera; }}
     public CharacterController CharacterController { get { return _characterController; }}
     public float AttackRadius { get { return _attackRadiusCurrent; }}
+    public float AttackDamage { get { return EvaluateCurve(_attackDamageCurve, _attackDamageCurrent); }}
+    public float AttackSpeed { get { return EvaluateCurve(_attackSpeedCurve, _playerSpeedCurrent); }}
+    public float MoveSpeed { get { return EvaluateCurve(_moveSpeedCurve, _playerSpeedCurrent); }}
 
-    private void Awake()
-    {
-        SetUpPlayer();
-    }
-
-    private void OnEnable()
-    {
-       SetUpPlayer();
-    }
 
     private void Update()
     {
@@ -62,15 +66,16 @@ public class MainPlayer : MonoBehaviour
         {
             if(hitCollider.CompareTag("Enemy"))
             {
-                //hitCollider.GetComponent<Enemy>().TakeDamage(10);
+                EnemyManager enemyManager = hitCollider.GetComponent<EnemyManager>();
+                enemyManager.TakeDamage(AttackDamage);
             }
         }
     }
 
     public void TakeDamage(float damage)
     {
-        //Health -= damage;
-        //if(Health <= 0) ChangeState(PlayerState.Dying);
+        _playerCurrentHealth.Value -= damage;
+        if(_playerCurrentHealth <= 0) ChangeState(PlayerState.Dying);
     }
 
     private void OnDrawGizmosSelected()
@@ -79,11 +84,8 @@ public class MainPlayer : MonoBehaviour
         Gizmos.DrawWireSphere(this.transform.position, _attackRadiusCurrent);
     }
 
-    private void SetUpPlayer()
+    private float EvaluateCurve(AnimationCurve curve, float value)
     {
-        _playerAnimator.MainPlayer = this;
-        _playerInput.MainPlayer = this;
-        _playerInput.MoveSpeed = _playerSpeedCurrent;
-        _playerInput.RotationSpeed = _playerRotationSpeedCurrent;
+        return curve.Evaluate(value);
     }
 }

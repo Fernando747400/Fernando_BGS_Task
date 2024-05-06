@@ -4,9 +4,8 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [Header("Dependencies")]
+    [Required][SerializeField] private MainPlayer _mainPlayer;
     [Required][SerializeField] private Animator _playerAnimator;
-
-    private MainPlayer _mainPlayer;
 
     [AnimatorParam("_playerAnimator")][SerializeField] private string _idleAnimation;
     [AnimatorParam("_playerAnimator")][SerializeField] private string _walkingAnimation;
@@ -62,6 +61,11 @@ public class PlayerAnimator : MonoBehaviour
     public void FinishAttack()
     {
         _mainPlayer.ChangeState(PlayerState.Idle);
+    }
+
+    public void Died()
+    {
+        Debug.Log("Player died, do something");
     }
 
     #endregion Methods called by animations

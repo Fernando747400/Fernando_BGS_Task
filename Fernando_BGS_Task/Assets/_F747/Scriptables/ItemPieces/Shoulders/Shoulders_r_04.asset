@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b7f4d7075044444bf5679ff966c6dd, type: 3}
+  m_Name: Shoulders_r_04
+  m_EditorClassIdentifier: 
+  ID: 25
+  Name: Shoulders_r_04
+  Sprite: {fileID: 21300000, guid: 893fc4b41b56e07479a71d811eee4b4e, type: 3}
+  BodyPartType: 5
+  Price: 180
+  Purchased: 0
+  HasPair: 1
+  Pair: {fileID: 11400000, guid: df854a5c89723b54ab141e0d83eaf9f5, type: 2}
+  BaseOfPair: 0
+  GrantsExtraStats: 1
+  Health: 5
+  Damage: 5
+  Speed: 0
+  StoreIcon: {fileID: -100374693, guid: c3120e85d15a2fd4cbfc3920cdd713ec, type: 3}
