@@ -39,7 +39,6 @@ public class PlayerAnimator : MonoBehaviour
                 break;
             case PlayerState.Death:
                 break;
-
                 default:
                 _playerAnimator.Play(_idleAnimation);
                 break;
