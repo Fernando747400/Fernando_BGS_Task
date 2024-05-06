@@ -31,12 +31,12 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+         if(!CanPerformAction()) return;
         _navMeshAgent.SetDestination(_target.position);
         
         if (CheckArrival())
         {
             if (_elapsedAttackTime < _enemyManager.AttackRate) return;
-            if(!CanPerformAction()) return;
             _enemyManager.ChangeState(PlayerState.Attacking);
             _elapsedAttackTime = 0f;
         }

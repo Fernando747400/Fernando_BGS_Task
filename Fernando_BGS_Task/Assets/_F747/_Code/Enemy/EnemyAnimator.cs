@@ -70,7 +70,7 @@ public class EnemyAnimator : MonoBehaviour
     public void Die()
     {
         _enemyManager.EnemyDiedChannel.Raise();
-       LeanPool.Despawn(this.gameObject);
+       LeanPool.Despawn(this.gameObject.transform.parent);
     }
 
     #endregion Methods called by animations

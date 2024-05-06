@@ -23,6 +23,7 @@ public class EnemyManager : MonoBehaviour
 
     [Header("Health")]
     [Required][SerializeField] private FloatVariable _maxHealth;
+    [Required][SerializeField] private HealthSlider _healthSlider;
 
     private PlayerState _currentState;
     private float _currentHealth = 100f;
@@ -68,6 +69,7 @@ public class EnemyManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+        _healthSlider.SetValues(_currentHealth, _maxHealth);
         if(_currentHealth <= 0) ChangeState(PlayerState.Dying);
     }
 
@@ -80,6 +82,7 @@ public class EnemyManager : MonoBehaviour
     private void SetUpEnemy()
     {
         _currentHealth = _maxHealth;
+        _healthSlider.SetValues(_currentHealth, _maxHealth);
         _enemyAnimator.EnemyManager = this;
         _enemyMovement.EnemyManager = this;
         _enemyMovement.NavMeshAgent = _navMeshAgent;
