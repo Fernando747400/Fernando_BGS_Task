@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using Obvious.Soap;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,9 @@ public class PlayerInput : MonoBehaviour
     [Required][SerializeField] private GameObject _playerSprite;
     [Required][SerializeField] private HealthSlider _attackSlider;
 
+    [Header("Game Pause")]
+    [Required][SerializeField] private ScriptableEventBool _gamePauseChannel;
+
     private Camera _playerCamera;
     private CharacterController _characterController;
 
@@ -18,6 +22,7 @@ public class PlayerInput : MonoBehaviour
     private PlayerState _currentState;
 
     private float _elpasedAttackTime = 0;
+    private bool _paused = false;
 
     public MainPlayer MainPlayer { set { _mainPlayer = value; } }
     public PlayerInputAction PlayerInputAction { get { return _playerInputAction; } }
@@ -34,18 +39,20 @@ public class PlayerInput : MonoBehaviour
         _characterController = _mainPlayer.CharacterController;
         _moveAction = _playerInputAction.MainPlayer.Move;
         _playerInputAction.MainPlayer.Attack.started += DoAttack;
+        _gamePauseChannel.OnRaised += UpdatePause;
     }
 
     private void OnDisable()
     {
         _playerInputAction.MainPlayer.Attack.started -= DoAttack;
         _playerInputAction.MainPlayer.Disable();
+        _gamePauseChannel.OnRaised -= UpdatePause;
     }
 
     private void Update()
     {
         Move();
-        if(_currentState != PlayerState.Paused) _elpasedAttackTime += Time.deltaTime;
+        if(_currentState != PlayerState.Paused && !_paused) _elpasedAttackTime += Time.deltaTime;
         _attackSlider.SetValues(_elpasedAttackTime, _mainPlayer.AttackSpeed);
     }
 
@@ -116,5 +123,11 @@ public class PlayerInput : MonoBehaviour
         return (_currentState != PlayerState.Attacking && _currentState != PlayerState.Dying && _currentState != PlayerState.Death && _currentState != PlayerState.Paused);
     }
 
+    private void UpdatePause(bool paused)
+    {
+        _paused = paused;
+        if (CanPerformAction()) _mainPlayer.ChangeState(PlayerState.Paused);
+        if(!_paused && _mainPlayer.CurrentState == PlayerState.Paused) _mainPlayer.ChangeState(PlayerState.Idle);
+    }
     
 }

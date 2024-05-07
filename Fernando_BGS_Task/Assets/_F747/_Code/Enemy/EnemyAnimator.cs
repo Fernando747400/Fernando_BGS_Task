@@ -1,5 +1,6 @@
 using Lean.Pool;
 using NaughtyAttributes;
+using Obvious.Soap;
 using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
@@ -7,6 +8,9 @@ public class EnemyAnimator : MonoBehaviour
 
     [Header("Dependencies")]
     [Required][SerializeField] private Animator _enemyAnimator;
+
+    [Header("Game Pause")]
+    [Required][SerializeField] private ScriptableEventBool _gamePauseChannel;
 
     private EnemyManager _enemyManager;
 
@@ -18,7 +22,19 @@ public class EnemyAnimator : MonoBehaviour
 
     private PlayerState _currentState;
 
+    private bool _paused = false; 
+
     public EnemyManager EnemyManager { set { _enemyManager = value; } }
+
+    private void OnEnable()
+    {
+        _gamePauseChannel.OnRaised += UpdatePause;
+    }
+
+    private void OnDisable()
+    {
+        _gamePauseChannel.OnRaised -= UpdatePause;
+    }
 
     public void SetState(PlayerState playerState)
     {
@@ -67,10 +83,17 @@ public class EnemyAnimator : MonoBehaviour
 
     public void Die()
     {
-        //_enemyManager.DeathParticles.PlayParticles();
+        _enemyManager.DeathParticles.PlayParticles();
         _enemyManager.EnemyDiedChannel.Raise();
-       LeanPool.Despawn(this.gameObject.transform.parent);
+        LeanPool.Despawn(this.gameObject.transform.parent);
     }
 
     #endregion Methods called by animations
+
+    private void UpdatePause(bool paused)
+    {
+        _paused = paused;
+        if (_paused) _enemyAnimator.speed = 0;
+        else _enemyAnimator.speed = 1;
+    }
 }

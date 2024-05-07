@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: SceneLoader
   m_EditorClassIdentifier: 
   _gamePausedChannel: {fileID: 11400000, guid: 952c7f617adbee540b4b61e3a9c35a0f, type: 2}
+  _mainSceneUnloadedChannel: {fileID: 11400000, guid: 219a3ed48651ed44bbdf7bbc6d94a150,
+    type: 2}
+  _mainSceneLoadedChannel: {fileID: 11400000, guid: 1d2d5e1ec9609424fbb1120886e068a3,
+    type: 2}
   _mainScene: 01_Main_Game
   _storeScene: 03_StoreScene
   _inventoryScene: 02_InventoryScene

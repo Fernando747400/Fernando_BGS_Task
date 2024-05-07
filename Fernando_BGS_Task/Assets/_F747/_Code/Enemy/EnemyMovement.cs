@@ -1,26 +1,42 @@
+using NaughtyAttributes;
+using Obvious.Soap;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(EnemyManager))]
 public class EnemyMovement : MonoBehaviour
 {
+    [Header("Game Pause")]
+    [Required][SerializeField] private ScriptableEventBool _gamePauseChannel;
+
     private EnemyManager _enemyManager;
     private NavMeshAgent _navMeshAgent;
 
-    [SerializeField] private Transform _target;
+    private Transform _target;
 
     private PlayerState _currentState = PlayerState.Idle;
     private float _elapsedAttackTime = 0f;
+
+    private bool _paused = false;
 
     public Transform Target { get { return _target; } set { _target = value; } }
     public EnemyManager EnemyManager { set { _enemyManager = value; } }
     public NavMeshAgent NavMeshAgent { set {  _navMeshAgent = value; SetUpNavMesh(); } }
 
+    private void OnEnable()
+    {
+        _gamePauseChannel.OnRaised += UpdatePause;
+    }
+
+    private void OnDisable()
+    {
+        _gamePauseChannel.OnRaised -= UpdatePause;
+    }
 
     private void Update()
     {
         MoveToTarget();
-        if(_currentState != PlayerState.Paused) _elapsedAttackTime += Time.deltaTime;
+        if(_currentState != PlayerState.Paused && !_paused) _elapsedAttackTime += Time.deltaTime;
     }
 
     public void MoveToTarget()
@@ -31,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-         if(!CanPerformAction()) return;
+         if(!CanPerformAction() || _paused) return;
         _navMeshAgent.SetDestination(_target.position);
         
         if (CheckArrival())
@@ -74,5 +90,15 @@ public class EnemyMovement : MonoBehaviour
     private bool CanPerformAction()
     {
         return (_currentState != PlayerState.Attacking && _currentState != PlayerState.Dying && _currentState != PlayerState.Death && _currentState != PlayerState.Paused);
+    }
+
+    private void UpdatePause(bool pause) 
+    { 
+        _paused = pause;
+        if (CanPerformAction()) _enemyManager.ChangeState(PlayerState.Paused);
+        if (!_paused && _enemyManager.CurrentState == PlayerState.Paused) _enemyManager.ChangeState(PlayerState.Idle);
+
+        if(_paused) _navMeshAgent.isStopped = true;
+        else _navMeshAgent.isStopped = false;
     }
 }

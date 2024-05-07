@@ -2,7 +2,6 @@ using Lean.Pool;
 using NaughtyAttributes;
 using Obvious.Soap;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -24,6 +23,9 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn Array")]
     [SerializeField] private Transform[] _spawnPoints;
 
+    [Header("Game Pause")]
+    [Required][SerializeField] private ScriptableEventBool _gamePauseChannel;
+
     private int _enemiesToSpawn = 0;
 
     private float _elpasedTime = 0;
@@ -36,11 +38,13 @@ public class EnemySpawner : MonoBehaviour
     private void OnEnable()
     {
         _starSpawningChannel.OnRaised += SpawnEnemy;
+        _gamePauseChannel.OnRaised += UpdatePause;
     }
 
     private void OnDisable()
     {
         _starSpawningChannel.OnRaised -= SpawnEnemy;
+        _gamePauseChannel.OnRaised -= UpdatePause;
     }
 
     private void Update()
@@ -111,5 +115,10 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return spawnPoint;
+    }
+
+    private void UpdatePause(bool paused)
+    {
+        _paused = paused;
     }
 }

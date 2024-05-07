@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ce4865de0bd2c41aa2e09de33b6782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+  _gamePauseChannel: {fileID: 11400000, guid: 952c7f617adbee540b4b61e3a9c35a0f, type: 2}
 --- !u!210 &4393914406863520133
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -5001,7 +5001,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4154002790797700045}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 447edb62eaaf0b94c9d59e4ae76bb8c0, type: 3}
   m_Name: 
@@ -6328,6 +6328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyAnimator: {fileID: 7145758728202579519}
+  _gamePauseChannel: {fileID: 11400000, guid: 952c7f617adbee540b4b61e3a9c35a0f, type: 2}
   _idleAnimation: Idle_Enemy
   _walkingAnimation: Walk_Enemy
   _attackingAnimation: Attack_Enemy

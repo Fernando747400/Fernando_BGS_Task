@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using Obvious.Soap;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
@@ -7,6 +8,9 @@ public class PlayerAnimator : MonoBehaviour
     [Required][SerializeField] private MainPlayer _mainPlayer;
     [Required][SerializeField] private Animator _playerAnimator;
 
+    [Header("Game Pause")]
+    [Required][SerializeField] private ScriptableEventBool _gamePauseChannel;
+
     [AnimatorParam("_playerAnimator")][SerializeField] private string _idleAnimation;
     [AnimatorParam("_playerAnimator")][SerializeField] private string _walkingAnimation;
     [AnimatorParam("_playerAnimator")][SerializeField] private string _attackingAnimation;
@@ -14,8 +18,19 @@ public class PlayerAnimator : MonoBehaviour
     [AnimatorParam("_playerAnimator")][SerializeField] private string _dyingAnimation;
 
     private PlayerState _currentState = PlayerState.Idle;
+    private bool _paused = false;
     
     public MainPlayer MainPlayer { set { _mainPlayer = value; } }
+
+    private void OnEnable()
+    {
+        _gamePauseChannel.OnRaised += UpdatePause;
+    }
+
+    private void OnDisable()
+    {
+        _gamePauseChannel.OnRaised -= UpdatePause;
+    }
 
     public void SetPlayerState(PlayerState playerState)
     {
@@ -69,4 +84,11 @@ public class PlayerAnimator : MonoBehaviour
     }
 
     #endregion Methods called by animations
+
+    private void UpdatePause(bool paused)
+    {
+        _paused = paused;
+        if(_paused) _playerAnimator.speed = 0;
+        else _playerAnimator.speed = 1;
+    }
 }

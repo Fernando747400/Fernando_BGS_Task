@@ -8,20 +8,17 @@ using System.Collections;
 public class SceneLoader : ScriptableObject
 {
     [Header("Dependencies")]
-    [Required]
-    [SerializeField] private ScriptableEventBool _gamePausedChannel;
+    [Required][SerializeField] private ScriptableEventBool _gamePausedChannel;
+    [Required][SerializeField] private ScriptableEventNoParam _mainSceneUnloadedChannel;
+    [Required][SerializeField] private ScriptableEventNoParam _mainSceneLoadedChannel;
 
     [Header("Settings")]
     [Scene][SerializeField] private string _mainScene;
     [Scene][SerializeField] private string _storeScene;
     [Scene][SerializeField] private string _inventoryScene;
 
-    private bool _gamePaused = false;
-
     public void LoadMainGame()
-    {
-        SceneManager.LoadScene(_mainScene);
-        _gamePaused = false;
+    {     _gamePausedChannel.Raise(false);
     }
 
     public void LoadStore(MonoBehaviour caller)
@@ -29,21 +26,25 @@ public class SceneLoader : ScriptableObject
        caller.StartCoroutine(LoadSceneAsync(_storeScene));
     }
 
-    public void LoadInventory()
+    public void LoadInventory(MonoBehaviour caller)
     {
-        SceneManager.LoadScene(_inventoryScene, LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(_inventoryScene));
+        caller.StartCoroutine(LoadSceneAsync(_inventoryScene));
     }
 
-    public void PauseGame()
+    public void UnloadStore(MonoBehaviour caller)
     {
-        _gamePausedChannel.Raise(_gamePaused);
-        _gamePaused = !_gamePaused;
+        caller.StartCoroutine(UnloadSceneAsync(_storeScene));
+    }
+
+    public void UnloadInventory(MonoBehaviour caller)
+    {
+        caller.StartCoroutine(UnloadSceneAsync(_inventoryScene));
     }
 
     private IEnumerator LoadSceneAsync(string Scene)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Scene);
+        _gamePausedChannel.Raise(true);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Scene, LoadSceneMode.Additive);
 
         while (!asyncLoad.isDone)
         { 
@@ -51,6 +52,21 @@ public class SceneLoader : ScriptableObject
         }
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(Scene));
+        _mainSceneUnloadedChannel.Raise();
+    }
+
+    private IEnumerator UnloadSceneAsync(string scene)
+    {
+        _mainSceneLoadedChannel.Raise();
+        _gamePausedChannel.Raise(false);
+
+        AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(scene);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(_mainScene));
+
+        while (!asyncUnload.isDone)
+        {
+            yield return null;
+        }
     }
 
     public void QuitApplication()
