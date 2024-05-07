@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
     [Header("Dependencies")]
     [Required][SerializeField] private MainPlayer _mainPlayer;
     [Required][SerializeField] private GameObject _playerSprite;
+    [Required][SerializeField] private HealthSlider _attackSlider;
 
     private Camera _playerCamera;
     private CharacterController _characterController;
@@ -44,6 +45,7 @@ public class PlayerInput : MonoBehaviour
     {
         Move();
         if(_currentState != PlayerState.Paused) _elpasedAttackTime += Time.deltaTime;
+        _attackSlider.SetValues(_elpasedAttackTime, _mainPlayer.AttackSpeed);
     }
 
     public void SetPlayerState(PlayerState state)

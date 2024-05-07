@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
     private PlayerState _currentState = PlayerState.Idle;
     private float _elapsedAttackTime = 0f;
 
-    public Transform Target { set { _target = value; } }
+    public Transform Target { get { return _target; } set { _target = value; } }
     public EnemyManager EnemyManager { set { _enemyManager = value; } }
     public NavMeshAgent NavMeshAgent { set {  _navMeshAgent = value; SetUpNavMesh(); } }
 
