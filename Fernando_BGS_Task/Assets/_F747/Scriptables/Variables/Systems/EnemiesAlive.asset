@@ -16,10 +16,10 @@ MonoBehaviour:
   Description: 
   _guid: 71005e4f58f38ee47b9035c94d35c5b7
   _saveGuid: 0
-  _value: 0
+  _value: 22
   _debugLogEnabled: 0
   _saved: 0
   _defaultValue: 0
   _resetOn: 0
-  _isClamped: 1
+  _isClamped: 0
   _minMax: {x: 0, y: 2147483647}
