@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using Obvious.Soap;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ public class PlayerInput : MonoBehaviour
     [Required][SerializeField] private MainPlayer _mainPlayer;
     [Required][SerializeField] private GameObject _playerSprite;
     [Required][SerializeField] private HealthSlider _attackSlider;
+    [Required][SerializeField] private SceneLoader _sceneLoader;
 
     [Header("Game Pause")]
     [Required][SerializeField] private ScriptableEventBool _gamePauseChannel;
@@ -39,12 +41,16 @@ public class PlayerInput : MonoBehaviour
         _characterController = _mainPlayer.CharacterController;
         _moveAction = _playerInputAction.MainPlayer.Move;
         _playerInputAction.MainPlayer.Attack.started += DoAttack;
+        _playerInputAction.MainPlayer.Inventory.started += DoInventory;
+        _playerInputAction.MainPlayer.Enable();
         _gamePauseChannel.OnRaised += UpdatePause;
     }
+
 
     private void OnDisable()
     {
         _playerInputAction.MainPlayer.Attack.started -= DoAttack;
+        _playerInputAction.MainPlayer.Inventory.started -= DoInventory;
         _playerInputAction.MainPlayer.Disable();
         _gamePauseChannel.OnRaised -= UpdatePause;
     }
@@ -90,6 +96,11 @@ public class PlayerInput : MonoBehaviour
         if (!CanPerformAction()) return;
         _mainPlayer.ChangeState(PlayerState.Attacking);
         _elpasedAttackTime = 0f;
+    }
+
+    private void DoInventory(InputAction.CallbackContext context)
+    {
+        _sceneLoader.LoadInventory(this);
     }
 
     private void LookForward(Vector3 direction)
