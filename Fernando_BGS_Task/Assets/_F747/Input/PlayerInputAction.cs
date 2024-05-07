@@ -64,9 +64,27 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Escape"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
-                    ""id"": ""b2966d47-64c5-4cc8-9afc-b3e2abd1efa5"",
+                    ""id"": ""09df9e9a-03a8-432b-948d-9e25d742c081"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""4629dac7-919d-4cdf-8b2b-65ee835d33ac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""62274884-08d6-4829-aae7-5acc8c6d2954"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -82,9 +100,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""Escape"",
                     ""type"": ""Button"",
-                    ""id"": ""09df9e9a-03a8-432b-948d-9e25d742c081"",
+                    ""id"": ""b2966d47-64c5-4cc8-9afc-b3e2abd1efa5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -182,6 +200,39 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""93c6df83-38b8-4b16-963e-83b6ad988683"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5915e54-5d65-4a45-a42c-1af5fd3ba050"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fb866af-0064-486b-b8bd-c3d734f3eaef"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9c14bece-ba4e-4961-88b7-36949470f0d6"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -204,23 +255,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""93c6df83-38b8-4b16-963e-83b6ad988683"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""080c3467-966d-4098-a307-e5df7fab239a"",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b5915e54-5d65-4a45-a42c-1af5fd3ba050"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""Enter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -235,9 +275,11 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_MainPlayer_Move = m_MainPlayer.FindAction("Move", throwIfNotFound: true);
         m_MainPlayer_Inventory = m_MainPlayer.FindAction("Inventory", throwIfNotFound: true);
         m_MainPlayer_Interact = m_MainPlayer.FindAction("Interact", throwIfNotFound: true);
-        m_MainPlayer_Escape = m_MainPlayer.FindAction("Escape", throwIfNotFound: true);
-        m_MainPlayer_Return = m_MainPlayer.FindAction("Return", throwIfNotFound: true);
         m_MainPlayer_Attack = m_MainPlayer.FindAction("Attack", throwIfNotFound: true);
+        m_MainPlayer_Heal = m_MainPlayer.FindAction("Heal", throwIfNotFound: true);
+        m_MainPlayer_Enter = m_MainPlayer.FindAction("Enter", throwIfNotFound: true);
+        m_MainPlayer_Return = m_MainPlayer.FindAction("Return", throwIfNotFound: true);
+        m_MainPlayer_Escape = m_MainPlayer.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -301,9 +343,11 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainPlayer_Move;
     private readonly InputAction m_MainPlayer_Inventory;
     private readonly InputAction m_MainPlayer_Interact;
-    private readonly InputAction m_MainPlayer_Escape;
-    private readonly InputAction m_MainPlayer_Return;
     private readonly InputAction m_MainPlayer_Attack;
+    private readonly InputAction m_MainPlayer_Heal;
+    private readonly InputAction m_MainPlayer_Enter;
+    private readonly InputAction m_MainPlayer_Return;
+    private readonly InputAction m_MainPlayer_Escape;
     public struct MainPlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -312,9 +356,11 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_MainPlayer_Move;
         public InputAction @Inventory => m_Wrapper.m_MainPlayer_Inventory;
         public InputAction @Interact => m_Wrapper.m_MainPlayer_Interact;
-        public InputAction @Escape => m_Wrapper.m_MainPlayer_Escape;
-        public InputAction @Return => m_Wrapper.m_MainPlayer_Return;
         public InputAction @Attack => m_Wrapper.m_MainPlayer_Attack;
+        public InputAction @Heal => m_Wrapper.m_MainPlayer_Heal;
+        public InputAction @Enter => m_Wrapper.m_MainPlayer_Enter;
+        public InputAction @Return => m_Wrapper.m_MainPlayer_Return;
+        public InputAction @Escape => m_Wrapper.m_MainPlayer_Escape;
         public InputActionMap Get() { return m_Wrapper.m_MainPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -336,15 +382,21 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnInteract;
-                @Escape.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnEscape;
-                @Escape.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnEscape;
-                @Escape.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnEscape;
-                @Return.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReturn;
-                @Return.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReturn;
-                @Return.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReturn;
                 @Attack.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnAttack;
+                @Heal.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnHeal;
+                @Heal.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnHeal;
+                @Heal.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnHeal;
+                @Enter.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnEnter;
+                @Return.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReturn;
+                @Return.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReturn;
+                @Return.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReturn;
+                @Escape.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnEscape;
             }
             m_Wrapper.m_MainPlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -361,15 +413,21 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @Escape.started += instance.OnEscape;
-                @Escape.performed += instance.OnEscape;
-                @Escape.canceled += instance.OnEscape;
-                @Return.started += instance.OnReturn;
-                @Return.performed += instance.OnReturn;
-                @Return.canceled += instance.OnReturn;
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
+                @Return.started += instance.OnReturn;
+                @Return.performed += instance.OnReturn;
+                @Return.canceled += instance.OnReturn;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
             }
         }
     }
@@ -380,8 +438,10 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnEscape(InputAction.CallbackContext context);
-        void OnReturn(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
+        void OnReturn(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

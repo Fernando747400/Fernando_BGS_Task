@@ -42,9 +42,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Escape",
+                    "name": "Attack",
                     "type": "Button",
-                    "id": "b2966d47-64c5-4cc8-9afc-b3e2abd1efa5",
+                    "id": "09df9e9a-03a8-432b-948d-9e25d742c081",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Heal",
+                    "type": "Button",
+                    "id": "4629dac7-919d-4cdf-8b2b-65ee835d33ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "62274884-08d6-4829-aae7-5acc8c6d2954",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -60,9 +78,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "Escape",
                     "type": "Button",
-                    "id": "09df9e9a-03a8-432b-948d-9e25d742c081",
+                    "id": "b2966d47-64c5-4cc8-9afc-b3e2abd1efa5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -160,6 +178,39 @@
                 },
                 {
                     "name": "",
+                    "id": "93c6df83-38b8-4b16-963e-83b6ad988683",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5915e54-5d65-4a45-a42c-1af5fd3ba050",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fb866af-0064-486b-b8bd-c3d734f3eaef",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9c14bece-ba4e-4961-88b7-36949470f0d6",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -182,23 +233,12 @@
                 },
                 {
                     "name": "",
-                    "id": "93c6df83-38b8-4b16-963e-83b6ad988683",
-                    "path": "<Mouse>/leftButton",
+                    "id": "080c3467-966d-4098-a307-e5df7fab239a",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b5915e54-5d65-4a45-a42c-1af5fd3ba050",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
+                    "action": "Enter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

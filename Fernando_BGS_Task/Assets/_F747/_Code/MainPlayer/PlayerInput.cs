@@ -1,6 +1,5 @@
 using NaughtyAttributes;
 using Obvious.Soap;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -42,8 +41,10 @@ public class PlayerInput : MonoBehaviour
         _moveAction = _playerInputAction.MainPlayer.Move;
         _playerInputAction.MainPlayer.Attack.started += DoAttack;
         _playerInputAction.MainPlayer.Inventory.started += DoInventory;
+        _playerInputAction.MainPlayer.Heal.started += DoHeal;
         _playerInputAction.MainPlayer.Enable();
         _gamePauseChannel.OnRaised += UpdatePause;
+        //LockMouse();
     }
 
 
@@ -51,6 +52,7 @@ public class PlayerInput : MonoBehaviour
     {
         _playerInputAction.MainPlayer.Attack.started -= DoAttack;
         _playerInputAction.MainPlayer.Inventory.started -= DoInventory;
+        _playerInputAction.MainPlayer.Heal.started -= DoHeal;
         _playerInputAction.MainPlayer.Disable();
         _gamePauseChannel.OnRaised -= UpdatePause;
     }
@@ -100,7 +102,17 @@ public class PlayerInput : MonoBehaviour
 
     private void DoInventory(InputAction.CallbackContext context)
     {
+        if (_mainPlayer.CurrentState == PlayerState.Dying || _paused) return;
         _sceneLoader.LoadInventory(this);
+    }
+
+    private void DoHeal(InputAction.CallbackContext context)
+    {
+        if(_mainPlayer.CurrentState == PlayerState.Dying || _paused) return;
+        if(_mainPlayer.PlayerCurrentPotions.Value <= 0) return;
+        if(_mainPlayer.CurrentHealth.Value == _mainPlayer.MaxHealth.Value) return;
+        _mainPlayer.Heal();
+        _mainPlayer.PlayerCurrentPotions.Value--;
     }
 
     private void LookForward(Vector3 direction)
@@ -139,6 +151,21 @@ public class PlayerInput : MonoBehaviour
         _paused = paused;
         if (CanPerformAction()) _mainPlayer.ChangeState(PlayerState.Paused);
         if(!_paused && _mainPlayer.CurrentState == PlayerState.Paused) _mainPlayer.ChangeState(PlayerState.Idle);
+
+        if(_paused) UnlockMouse();
+        else LockMouse();
+    }
+
+    private void LockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void UnlockMouse()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     
 }

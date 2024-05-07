@@ -14,6 +14,7 @@ public class MainPlayer : MonoBehaviour
     [Header("Player Health")]
     [Required][SerializeField] private FloatVariable _playerMaxHealth;
     [Required][SerializeField] private FloatVariable _playerCurrentHealth;
+    [Required][SerializeField] private IntVariable _playerCurrentPotions;
 
     [Header("Player Movement")]
     [Required][SerializeField] private FloatVariable _playerSpeedCurrent;
@@ -39,10 +40,13 @@ public class MainPlayer : MonoBehaviour
     public PlayerState CurrentState { get { return _currentState; }}
     public Camera PlayerCamera { get { return _playerCamera; }}
     public CharacterController CharacterController { get { return _characterController; }}
+    public IntVariable PlayerCurrentPotions { get { return _playerCurrentPotions; }}
     public float AttackRadius { get { return _attackRadiusCurrent; }}
     public float AttackDamage { get { return EvaluateCurve(_attackDamageCurve, _attackDamageCurrent); }}
     public float AttackSpeed { get { return EvaluateCurve(_attackSpeedCurve, _playerSpeedCurrent); }}
     public float MoveSpeed { get { return EvaluateCurve(_moveSpeedCurve, _playerSpeedCurrent); }}
+    public FloatVariable CurrentHealth { get { return _playerCurrentHealth; }}
+    public FloatVariable MaxHealth { get { return _playerMaxHealth; }}
 
 
     private void OnEnable()
@@ -78,6 +82,11 @@ public class MainPlayer : MonoBehaviour
         _playerCurrentHealth.Value -= damage;
         Debug.Log("Player Recived Damage");
         if(_playerCurrentHealth <= 0) ChangeState(PlayerState.Dying);
+    }
+
+    public void Heal()
+    {
+        _playerCurrentHealth.Value = _playerMaxHealth;
     }
 
     private void OnDrawGizmosSelected()
