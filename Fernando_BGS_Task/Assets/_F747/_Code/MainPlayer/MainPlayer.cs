@@ -12,6 +12,7 @@ public class MainPlayer : MonoBehaviour
     [Required][SerializeField] private ScriptableEventNoParam _playerDiedChannel;
 
     [Header("Player Health")]
+    [Required][SerializeField] private FloatVariable _playerMaxHealth;
     [Required][SerializeField] private FloatVariable _playerCurrentHealth;
 
     [Header("Player Movement")]
@@ -44,9 +45,9 @@ public class MainPlayer : MonoBehaviour
     public float MoveSpeed { get { return EvaluateCurve(_moveSpeedCurve, _playerSpeedCurrent); }}
 
 
-    private void Update()
+    private void OnEnable()
     {
-        
+        _playerCurrentHealth = _playerMaxHealth;
     }
 
     public void ChangeState(PlayerState newState)
