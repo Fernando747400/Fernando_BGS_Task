@@ -222,6 +222,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d92381cc-5297-4bc9-bf6f-aab8da74de61",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "bf0bc9f4-c0e8-420f-8ca5-65932e2fd419",
                     "path": "<Keyboard>/backspace",
                     "interactions": "",

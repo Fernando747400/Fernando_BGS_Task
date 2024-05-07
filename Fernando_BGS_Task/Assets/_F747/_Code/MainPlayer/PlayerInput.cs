@@ -10,6 +10,9 @@ public class PlayerInput : MonoBehaviour
     [Required][SerializeField] private GameObject _playerSprite;
     [Required][SerializeField] private HealthSlider _attackSlider;
     [Required][SerializeField] private SceneLoader _sceneLoader;
+    [Required][SerializeField] private GameObject _escCanvas;
+    [Required][SerializeField] private GameObject _mainCanvas;
+    [Required][SerializeField] private ScriptableEventNoParam _gameWinChannel;
 
     [Header("Game Pause")]
     [Required][SerializeField] private ScriptableEventBool _gamePauseChannel;
@@ -24,6 +27,7 @@ public class PlayerInput : MonoBehaviour
 
     private float _elpasedAttackTime = 0;
     private bool _paused = false;
+    private bool _gameWon = false;
 
     public MainPlayer MainPlayer { set { _mainPlayer = value; } }
     public PlayerInputAction PlayerInputAction { get { return _playerInputAction; } }
@@ -42,6 +46,8 @@ public class PlayerInput : MonoBehaviour
         _playerInputAction.MainPlayer.Attack.started += DoAttack;
         _playerInputAction.MainPlayer.Inventory.started += DoInventory;
         _playerInputAction.MainPlayer.Heal.started += DoHeal;
+        _playerInputAction.MainPlayer.Escape.started += DoPause;
+        _gameWinChannel.OnRaised += GameWon;
         _playerInputAction.MainPlayer.Enable();
         _gamePauseChannel.OnRaised += UpdatePause;
         //LockMouse();
@@ -53,6 +59,8 @@ public class PlayerInput : MonoBehaviour
         _playerInputAction.MainPlayer.Attack.started -= DoAttack;
         _playerInputAction.MainPlayer.Inventory.started -= DoInventory;
         _playerInputAction.MainPlayer.Heal.started -= DoHeal;
+        _playerInputAction.MainPlayer.Escape.started -= DoPause;
+        _gameWinChannel.OnRaised -= GameWon;
         _playerInputAction.MainPlayer.Disable();
         _gamePauseChannel.OnRaised -= UpdatePause;
     }
@@ -106,6 +114,20 @@ public class PlayerInput : MonoBehaviour
         _sceneLoader.LoadInventory(this);
     }
 
+    private void DoPause(InputAction.CallbackContext context)
+    {
+        if(_gameWon) return;
+        if (_mainPlayer.CurrentState == PlayerState.Dying) return;
+        Debug.Log("Pause button");
+        _paused = !_paused;
+       if(_paused) _gamePauseChannel.Raise(true);
+       else _gamePauseChannel.Raise(false);
+        _escCanvas.SetActive(_paused);
+        _mainCanvas.SetActive(!_paused);
+        if (_paused) UnlockMouse();
+        else LockMouse();
+    }
+
     private void DoHeal(InputAction.CallbackContext context)
     {
         if(_mainPlayer.CurrentState == PlayerState.Dying || _paused) return;
@@ -156,16 +178,22 @@ public class PlayerInput : MonoBehaviour
         else LockMouse();
     }
 
-    private void LockMouse()
+    public void LockMouse()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    private void UnlockMouse()
+    public void UnlockMouse()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public void GameWon()
+    {
+        _gameWon = true;
+        UnlockMouse();
     }
     
 }
