@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2181161128738004348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2181161128738004338}
+  - component: {fileID: 2181161128738004349}
+  m_Layer: 10
+  m_Name: PotionsSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2181161128738004338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181161128738004348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 776864962967403181}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2181161128738004349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181161128738004348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ef2ff45e41cfa4a8379365c8b432cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PotionPickedChannel: {fileID: 11400000, guid: ffd3ac8074b52d5478f140899c94bda4,
+    type: 2}
+  _playerPotions: {fileID: 11400000, guid: 598e9e1dc363d7942843332cfdb5b8a4, type: 2}
+  _potion: {fileID: 4066616622160411296}
+  _gamePauseChannel: {fileID: 11400000, guid: 952c7f617adbee540b4b61e3a9c35a0f, type: 2}
+  _spawnRate: {x: 120, y: 180}
+--- !u!1001 &4778583991779850952
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2181161128738004338}
+    m_Modifications:
+    - target: {fileID: 2540982615784291150, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: _mainCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420143783859546963, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209341484995171411, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240541782222393482, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694461511234328423, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0073129376
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7817229
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999891
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.004677295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808889787859992680, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_Name
+      value: Potion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808889787859992680, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808889787859992680, guid: 44298e417ef86ac4595bc6bab98710f0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Props
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2005638957999524791, guid: 44298e417ef86ac4595bc6bab98710f0, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 44298e417ef86ac4595bc6bab98710f0, type: 3}
+--- !u!4 &776864962967403181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5230660778641162341, guid: 44298e417ef86ac4595bc6bab98710f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4778583991779850952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4066616622160411296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8808889787859992680, guid: 44298e417ef86ac4595bc6bab98710f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4778583991779850952}
+  m_PrefabAsset: {fileID: 0}

@@ -11,8 +11,8 @@ public class EnemySpawner : MonoBehaviour
     [Required][SerializeField] private IntVariable _enemiesAlive;
 
     [Header("Dependencies Channels SO")]
-    [Required][SerializeField] private ScriptableEventNoParam _finishedSpawningChannel;
     [Required][SerializeField] private ScriptableEventInt _starSpawningChannel;
+    [Required][SerializeField] private ScriptableEventNoParam _finishedSpawningChannel;
 
     [Header("Settings SO")]
     [Required][SerializeField] private FloatVariable _spawnCadence;
