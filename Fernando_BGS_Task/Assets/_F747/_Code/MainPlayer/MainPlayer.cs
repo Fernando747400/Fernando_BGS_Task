@@ -47,7 +47,7 @@ public class MainPlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerCurrentHealth = _playerMaxHealth;
+        //_playerCurrentHealth = _playerMaxHealth;
     }
 
     public void ChangeState(PlayerState newState)
@@ -76,6 +76,7 @@ public class MainPlayer : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _playerCurrentHealth.Value -= damage;
+        Debug.Log("Player Recived Damage");
         if(_playerCurrentHealth <= 0) ChangeState(PlayerState.Dying);
     }
 

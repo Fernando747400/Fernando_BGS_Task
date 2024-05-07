@@ -18,8 +18,8 @@ MonoBehaviour:
   _saveGuid: 0
   _value: 120
   _debugLogEnabled: 0
-  _saved: 1
+  _saved: 0
   _defaultValue: 120
   _resetOn: 0
   _isClamped: 1
-  _minMax: {x: 0, y: 1000}
+  _minMax: {x: 0, y: 300}

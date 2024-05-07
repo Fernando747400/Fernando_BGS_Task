@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
         {
             _elpasedTime = 0;
             _enemiesToSpawn--;
-            _enemiesAlive.Value++;
+            _enemiesAlive.Value = _enemiesAlive.Value + 1;
             Spawn();
         }
         else

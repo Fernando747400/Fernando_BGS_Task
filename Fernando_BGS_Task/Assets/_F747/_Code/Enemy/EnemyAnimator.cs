@@ -69,6 +69,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public void Die()
     {
+        _enemyManager.DeathParticles.PlayParticles();
         _enemyManager.EnemyDiedChannel.Raise();
        LeanPool.Despawn(this.gameObject.transform.parent);
     }
