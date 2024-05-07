@@ -80,7 +80,8 @@ public class PlayerAnimator : MonoBehaviour
 
     public void Died()
     {
-        Debug.Log("Player died, do something");
+        _mainPlayer.PlayerDiedChannel.Raise();
+        _mainPlayer.ChangeState(PlayerState.Idle);
     }
 
     #endregion Methods called by animations

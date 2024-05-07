@@ -45,6 +45,7 @@ public class MainPlayer : MonoBehaviour
     public float AttackDamage { get { return EvaluateCurve(_attackDamageCurve, _attackDamageCurrent); }}
     public float AttackSpeed { get { return EvaluateCurve(_attackSpeedCurve, _playerSpeedCurrent); }}
     public float MoveSpeed { get { return EvaluateCurve(_moveSpeedCurve, _playerSpeedCurrent); }}
+    public ScriptableEventNoParam PlayerDiedChannel { get { return _playerDiedChannel; }}
     public FloatVariable CurrentHealth { get { return _playerCurrentHealth; }}
     public FloatVariable MaxHealth { get { return _playerMaxHealth; }}
 

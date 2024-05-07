@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     private void PlayerDied()
     {
-        _playerMoney.Value = _playerDeathValue;
+        _playerMoney.Value -= _playerDeathValue;
     }
 
     private void UpdatePause(bool pause)
