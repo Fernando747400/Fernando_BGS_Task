@@ -20,10 +20,12 @@ public class PlayerInput : MonoBehaviour
     private float _elpasedAttackTime = 0;
 
     public MainPlayer MainPlayer { set { _mainPlayer = value; } }
+    public PlayerInputAction PlayerInputAction { get { return _playerInputAction; } }
 
     private void Awake()
     {
         _playerInputAction = new PlayerInputAction();
+        _playerInputAction.MainPlayer.Enable();
     }
 
     private void OnEnable()
@@ -32,7 +34,6 @@ public class PlayerInput : MonoBehaviour
         _characterController = _mainPlayer.CharacterController;
         _moveAction = _playerInputAction.MainPlayer.Move;
         _playerInputAction.MainPlayer.Attack.started += DoAttack;
-        _playerInputAction.MainPlayer.Enable();
     }
 
     private void OnDisable()

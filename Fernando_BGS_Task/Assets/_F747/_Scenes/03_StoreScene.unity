@@ -2214,7 +2214,6 @@ GameObject:
   - component: {fileID: 479144986}
   - component: {fileID: 479144985}
   - component: {fileID: 479144983}
-  - component: {fileID: 479144982}
   - component: {fileID: 479144987}
   m_Layer: 0
   m_Name: Main Camera
@@ -2223,14 +2222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &479144982
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479144981}
-  m_Enabled: 1
 --- !u!124 &479144983
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2263,7 +2254,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 110
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -2290,7 +2281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479144981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.25, z: -10}
+  m_LocalPosition: {x: 0, y: 100, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
