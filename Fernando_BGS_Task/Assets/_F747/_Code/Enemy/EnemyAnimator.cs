@@ -1,7 +1,5 @@
 using Lean.Pool;
 using NaughtyAttributes;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAnimator : MonoBehaviour
@@ -69,7 +67,7 @@ public class EnemyAnimator : MonoBehaviour
 
     public void Die()
     {
-        _enemyManager.DeathParticles.PlayParticles();
+        //_enemyManager.DeathParticles.PlayParticles();
         _enemyManager.EnemyDiedChannel.Raise();
        LeanPool.Despawn(this.gameObject.transform.parent);
     }

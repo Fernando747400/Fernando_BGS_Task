@@ -25,8 +25,8 @@ public class EnemyManager : MonoBehaviour
     [Required][SerializeField] private FloatVariable _maxHealth;
     [Required][SerializeField] private HealthSlider _healthSlider;
 
-    [Header("VFX")]
-    [Required][SerializeField] private DeathParticles _deathParticles;
+    //[Header("VFX")]
+    //[Required][SerializeField] private DeathParticles _deathParticles;
 
     private PlayerState _currentState;
     private float _currentHealth = 100f;
@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour
     public float AttackDamage { get { return _attackDamage; } }
     public float MovementSpeed { get { return _movementSpeed; } }
     public float StoppingDistance { get { return _stoppingDistance; } }
-    public DeathParticles DeathParticles { get { return _deathParticles; } }
+    //public DeathParticles DeathParticles { get { return _deathParticles; } }
     public ScriptableEventNoParam EnemyDiedChannel { get { return _enemyDiedChannel; } }
 
     private void Awake()
