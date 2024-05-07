@@ -11,6 +11,7 @@ public class GameTimer : MonoBehaviour
     [Required][SerializeField] ScriptableEventInt _gameStartedChannel;
     [Required][SerializeField] TextMeshProUGUI _finalClock;
     [Required][SerializeField] GameObject _finalCanvas;
+    [Required][SerializeField] GameObject _mainCanvas;
 
     private bool _started = false;
     private float _elapsedTime = 0;
@@ -47,5 +48,6 @@ public class GameTimer : MonoBehaviour
     {
       _started = false;
         _finalCanvas.SetActive(true);
+        _mainCanvas.SetActive(false);
     }
 }

@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using Obvious.Soap;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -117,6 +118,7 @@ public class PlayerInput : MonoBehaviour
     private void DoPause(InputAction.CallbackContext context)
     {
         if(_gameWon) return;
+        if(SceneManager.GetActiveScene().name != "01_Main_Game") return;
         if (_mainPlayer.CurrentState == PlayerState.Dying) return;
         Debug.Log("Pause button");
         _paused = !_paused;
